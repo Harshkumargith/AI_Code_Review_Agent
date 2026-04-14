@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* 3D perspective */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.neon-text {
+  /* 🌈 Gradient text */
+  background: linear-gradient(90deg, #a855f7, #c084fc, #e879f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* 🧊 3D Depth */
+  text-shadow:
+    1px 1px 0 #1e293b,
+    2px 2px 0 #1e293b,
+    3px 3px 0 #1e293b,
+
+    /* ✨ Neon Glow */
+    0 0 5px #a855f7,
+    0 0 10px #a855f7,
+    0 0 20px #9333ea,
+    0 0 40px #7e22ce,
+    0 0 80px #6b21a8;
+
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+/* 🔥 Hover = stronger glow */
+.neon-text:hover {
+  transform: scale(1.03);
+  text-shadow:
+    2px 2px 0 #1e293b,
+    4px 4px 0 #1e293b,
+
+    0 0 10px #c084fc,
+    0 0 20px #a855f7,
+    0 0 40px #9333ea,
+    0 0 80px #7e22ce,
+    0 0 120px #6b21a8;
+}
+
+/* ⚡ Subtle animation */
+.neon-text {
+  animation: neonPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+  from {
+    text-shadow:
+      1px 1px 0 #1e293b,
+      0 0 10px #9333ea,
+      0 0 20px #7e22ce;
+  }
+  to {
+    text-shadow:
+      2px 2px 0 #1e293b,
+      0 0 20px #c084fc,
+      0 0 40px #a855f7;
+  }
+}
+
+.neon-3d {
+  text-shadow:
+    0 1px 0 #ccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,0.1),
+    0 0 20px rgba(168,85,247,0.6),
+    0 0 40px rgba(236,72,153,0.5);
+}

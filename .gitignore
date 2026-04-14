@@ -1,0 +1,5 @@
+
+.env
+.vscode
+backend/dataset/
+*.csv
