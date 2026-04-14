@@ -19,8 +19,9 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
           script: |
-            cd ~/AI_Code_Review_Agent || cd ~/hotel-management-system
+            cd ~/AI_Code_Review_Agent
 
             git pull origin main
 
