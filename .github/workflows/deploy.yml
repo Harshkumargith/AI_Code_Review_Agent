@@ -22,10 +22,7 @@ jobs:
           port: 22
           script: |
             cd ~/AI_Code_Review_Agent
-
             git pull origin main
-
             docker-compose down
             docker-compose up -d --build
-
             echo "Deployment done"
