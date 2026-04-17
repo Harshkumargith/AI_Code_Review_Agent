@@ -118,12 +118,14 @@ def review(data: CodeInput):
 @router.post("/repo-review")
 def repo_review(data: RepoInput):
 
-    folder = clone_repo(data.repo_url)
-    code = read_repo_code(folder)
-
-    metric_result = predict_code_metrics(code)
+    folder = clone_repo(data.repo_url) #Takes the GitHub repo URL from input.
+    code = read_repo_code(folder) # Reads all files from the cloned repo. Converts them into a single text/code string.#
+    metric_result = predict_code_metrics(code) #Sends code to an ML model.
     text_result = predict_text_issue(code)
-
+#This is the input state for your AI agent.
+#It contains:
+#raw code
+#placeholders for results
     state = {
         "code": code,
         "initial_analysis": "",
@@ -131,6 +133,7 @@ def repo_review(data: RepoInput):
         "fixed_code": "",
         "final_report": ""
     }
+#Calls your AI workflow
 
     result = agent.graph.invoke(state)
 
